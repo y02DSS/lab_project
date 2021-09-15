@@ -4,6 +4,6 @@ class lab8():
 		self.k()
 
 	def k(self):
-		print(1)
+		print(12)
 
 lab8()
