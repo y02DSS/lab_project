@@ -106,9 +106,3 @@ class lab8():
 		return anim_object,
 
 
-lab8()
-
-
-
-
-
