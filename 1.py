@@ -40,31 +40,35 @@ class lab8():
 		return self.krug(self.x, self.y)
 
 
-	
-
 	def krug(self, x0, y0):
 		fig, ax = plt.subplots()
 		anim_object, = plt.plot([], [], '-', lw=2)
 		xdata, ydata = [], []
 
-	def update(self):
-		print(1)
-		theta = np.linspace(0, 2 * np.pi, 100)
-		xdata = (frame*np.cos(theta)) 
-		ydata = (frame*np.sin(theta))
-		for i, j in zip(x0, y0):
-			if xdata == i or xdata == j:
-				print('прик')
-		anim_object.set_data(xdata, ydata)
-		return anim_object,
+
+		def update(frame, x0, y0):
+			print(1)
+			theta = np.linspace(0, 2 * np.pi, 100)
+			xdata = (frame*np.cos(theta)) 
+			ydata = (frame*np.sin(theta))
+			for i, j in zip(x0, y0):
+				for h in range(len(theta)):
+					if xdata[h] == i or ydata[h] == j:
+						print('прик')
+			anim_object.set_data(xdata, ydata)
+			return anim_object,
 
 		ani = FuncAnimation(fig,
-							self.update,
-							frames=np.arange(0, 4, 0.1), 
-
+							update,
+							frames=np.arange(0, 4, 0.1),
 							interval=10,
+							fargs = (x0, y0,),
 							blit=True)
-		ani.save('add/lab7_2_b.gif')
+		ani.save('lab7_2_b.gif')
+
+
+
+
 
 
 
@@ -89,7 +93,7 @@ class lab8():
 					self.b = j
 
 	def draw(self):
-		self.anim_object, = plt.plot([], [], '-', lw = 2)
+		anim_object, = plt.plot([], [], '-', lw = 2)
 		fig, ax = plt.subplots()
 		anim_object, = plt.plot([], [], '-', lw = 2)
 		xdata, ydata = [], []
@@ -99,7 +103,7 @@ class lab8():
 		ax.set_ylim(-5, 5)
 		ani.save('lab_7_3.gif')
 
-	def update(self, frames):
+	def update1(self, frames):
 		self.anim_object.set_data(self.circle(frames)[0], circle(frames)[1])
 		return anim_object,
 
