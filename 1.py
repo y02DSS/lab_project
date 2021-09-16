@@ -9,8 +9,6 @@ class lab8():
 		self.x = []
 		self.y = []
 		self.edge = 25
-		global fig
-		global ax
 		self.k()
 
 	def k(self):
@@ -29,7 +27,6 @@ class lab8():
 		for i, j in zip(x3, y3):
 			self.x.append(i)
 			self.y.append(j)
-		fig, ax = plt.subplots()
 		plt.axis('equal')
 		ax.set_xlim(-self.edge, self.edge)
 		ax.set_ylim(-self.edge, self.edge)
@@ -41,7 +38,6 @@ class lab8():
 
 
 	def krug(self, x0, y0):
-		fig, ax = plt.subplots()
 		anim_object, = plt.plot([], [], '-', lw=2)
 		xdata, ydata = [], []
 
@@ -49,32 +45,34 @@ class lab8():
 		def update(frame, x0, y0):
 			print(1)
 			theta = np.linspace(0, 2 * np.pi, 100)
-			xdata = (frame*np.cos(theta)) 
-			ydata = (frame*np.sin(theta))
 			for i, j in zip(x0, y0):
 				for h in range(len(theta)):
+					xdata = (frame*np.cos(theta))
+					ydata = (frame*np.sin(theta))
 					if xdata[h] == i or ydata[h] == j:
-						print('прик')
+						break
 			anim_object.set_data(xdata, ydata)
 			return anim_object,
 
 		ani = FuncAnimation(fig,
 							update,
-							frames=np.arange(0, 4, 0.1),
+							frames=np.arange(0, 6, 0.1),
 							interval=10,
 							fargs = (x0, y0,),
 							blit=True)
+		plt.show()
 		ani.save('lab7_2_b.gif')
 
 
+fig, ax = plt.subplots()
+lab8()
 
 
 
 
 
 
-
-
+'''
 	def circle(self):
 		end = []
 		n = int(input("Введите число точек "))
@@ -106,7 +104,8 @@ class lab8():
 	def update1(self, frames):
 		self.anim_object.set_data(self.circle(frames)[0], circle(frames)[1])
 		return anim_object,
+'''
 
-lab8()
+
 
 
