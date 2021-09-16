@@ -9,9 +9,9 @@ class lab8():
 		self.x = []
 		self.y = []
 		self.edge = 25
+		global fig
+		global ax
 		self.k()
-		self.a = 0
-		self.b = 0
 
 	def k(self):
 		x3 = np.linspace(-5, 5, 300)
@@ -37,7 +37,39 @@ class lab8():
 		plt.plot(x1, y1)
 		plt.plot(x2, y2)
 
-		return self.collusion(self.x, self.y)
+		return self.krug(self.x, self.y)
+
+
+	
+
+	def krug(self, x0, y0):
+		fig, ax = plt.subplots()
+		anim_object, = plt.plot([], [], '-', lw=2)
+		xdata, ydata = [], []
+
+	def update(self):
+		print(1)
+		theta = np.linspace(0, 2 * np.pi, 100)
+		xdata = (frame*np.cos(theta)) 
+		ydata = (frame*np.sin(theta))
+		for i, j in zip(x0, y0):
+			if xdata == i or xdata == j:
+				print('прик')
+		anim_object.set_data(xdata, ydata)
+		return anim_object,
+
+		ani = FuncAnimation(fig,
+							self.update,
+							frames=np.arange(0, 4, 0.1), 
+
+							interval=10,
+							blit=True)
+		ani.save('add/lab7_2_b.gif')
+
+
+
+
+
 
 	def circle(self):
 		end = []
