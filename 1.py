@@ -5,23 +5,35 @@ import numpy as np
 class lab8():
 	def __init__(self):
 		super().__init__()
+		self.x = []
+		self.y = []
 		self.k()
 
 	def k(self):
-		x = np.linspace(-5, 5, 100)
-		y = (x - 2)*(x + 2)
+		x3 = np.linspace(-5, 5, 300)
+		y3 = x3**2/4-10
+		y1 = np.linspace(-3, 10, 300)
+		x1 = y1 - 5
+		y2 = np.linspace(-3, 10, 300)
+		x2 = -y1 + 20
+		for i, j in zip(x1, y1):
+			self.x.append(i)
+			self.y.append(j)
+		for i, j in zip(x2, y2):
+			self.x.append(i)
+			self.y.append(j)
+		for i, j in zip(x3, y3):
+			self.x.append(i)
+			self.y.append(j)
 		fig, ax = plt.subplots()
-		ax.hlines(0, -5, 5, linewidth = 5)
-		ax.hlines(10, -5, 10, linewidth = 5)
-		ax.hlines(-10, -10, 15, linewidth = 5)
-		ax.vlines(10, -5, 10, linewidth = 5)
-		ax.vlines(-15, -15, 15, linewidth = 5)
 		edge = 25
 		plt.axis('equal')
 		ax.set_xlim(-edge, edge)
 		ax.set_ylim(-edge, edge)
-
-		plt.show()
+		plt.plot(x3, y3)
+		plt.plot(x1, y1)
+		plt.plot(x2, y2)
+		return collusion(self.x, self.y)
 
 	def circle(r,a,b):
 		n = int(input("Введите число точек "))
