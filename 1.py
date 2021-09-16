@@ -39,19 +39,22 @@ class lab8():
 
 		return self.collusion(self.x, self.y)
 
-	def circle(self,a,b):
+	def circle(self):
+		end = []
 		n = int(input("Введите число точек "))
 		r = np.linspace(0, self.edge, 100)
-		self.xc = np.linspace(-2*r,2*r,n)
-		self.yc = np.linspace(-2*r,2*r,n)
-		return xc, yc
+		xc = np.linspace(-2*r,2*r,n)
+		yc = np.linspace(-2*r,2*r,n)
+		end.append(xc)
+		end.append(yc)
+		return end
 
 	def collusion(self, x, y):
-		while self.circle(self.a, self.b)[0] != x and self.circle(self.a, self.b)[1] != y:
+		while self.circle()[0] != x and self.circle()[1] != y:
 			for i,j in zip(x,y):
-				if self.circle(self.a,self.b).x1 == i and self.circle(self.a,self.b).y1 == j:
-					a = i
-					b = j
+				if self.circle()[0] == i and self.circle()[1] == j:
+					self.a = i
+					self.b = j
 
 	def draw(self):
 		self.anim_object, = plt.plot([], [], '-', lw = 2)
