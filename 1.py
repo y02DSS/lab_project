@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import numpy as np
+import sympy
 
 class lab8():
 	def __init__(self):
@@ -33,7 +34,7 @@ class lab8():
 		plt.show()
 
 	def collusion():
-		while x != x0 and y != y0:
+		while x != edge and y != edge:
 			draw()
 
 	def draw():
